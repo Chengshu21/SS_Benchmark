@@ -2,17 +2,13 @@
 ### installing packages needed ###
 ###install and load data
 ##### install.packages("~/PIGSARData/PIGSARData.0.1.2.tar.gz", repos = NULL, type = "source")
-
+####  library(Biobase)
+####  library(GSVA)
+####  library(GSVAdata) 
 ####functions to get data
+
 applied_gsva_4methods = function(gse， KEGG_genesetcollection){
-  install.packages("BiocManager")
-  BiocManager::install("Biobase")
-  BiocManager::install("GSVA")
-  BiocManager::install("GSVAdata")
-  library(Biobase)
-  library(GSVA)
-  library(GSVAdata)
-  
+
   if (identical(class(gse), "matrix") == TRUE){
     result.gsva = gsva(gse, KEGG_genesetcollection, method = "gsva", mx.diff = FALSE, parallel.sz=1, abs.ranking = FALSE, verbose=TRUE)
     result.plage = gsva(gse, KEGG_genesetcollection, method = "plage", mx.diff = FALSE, parallel.sz=1, abs.ranking = FALSE, verbose=TRUE)
